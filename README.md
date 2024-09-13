@@ -51,8 +51,8 @@ group by order_id
 order by num_items DESC;
 
 -- how may items had more than 12 items
-select count(*) from
 
+select count(*) from
 (select order_id, count(item_id) as num_items 
 from order_details
 group by order_id
@@ -62,11 +62,13 @@ having num_items > '12') as num_orders;
 -- Analyze Customer Behavior
 
 -- Combine the menu_items and order_details table 
+
 select *
 from order_details od Left join menu_items mi
      on od.item_id = mi.menu_item_id;
      
 -- What were the least and most ordered items? What categories were they in?
+
 select item_name, count(order_details_id) as num_purchases
 from order_details od Left join menu_items mi
      on od.item_id = mi.menu_item_id
@@ -74,6 +76,7 @@ group by item_name
 order by num_purchases desc ;
 
 -- Category
+
 select item_name, category, count(order_details_id) as num_purchases
 from order_details od Left join menu_items mi
      on od.item_id = mi.menu_item_id
@@ -106,6 +109,7 @@ where order_id in (440, 2075, 1957, 330, 2675)
 group by category; 
 
  -- using order_id to identify each customer detalils 
+
 select order_id, category, count(item_id) as num_items 
 from order_details od Left join menu_items mi
      on od.item_id = mi.menu_item_id
