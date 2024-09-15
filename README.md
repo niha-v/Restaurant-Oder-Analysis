@@ -1,28 +1,36 @@
+--Use Restaurant Data.
+
 use restaurant_db;
 
 -- View Menu_items table.
+
 select * from menu_items;
 
--- Find number of items on the menu
+-- Find number of items on the menu.
+
 select count(*) from menu_items;
 
--- Least and expensive item 
+-- Least and expensive item.
+
 select * from menu_items
 order by price;
 
 select * from menu_items
 order by price desc;
 
--- Italain dishes
+-- Italain dishes.
+
 select count(*) from menu_items
 where category = 'Italian';
 
--- Least and expesive italain dish
+-- Least and expesive italain dish.
+
 select * from menu_items
 where category = 'Italian'
 order by price;
 
--- dishes in each category
+-- Dishes in each category.
+
 select category, count(menu_item_id) as num_dishes
 from menu_items
 group by category;
